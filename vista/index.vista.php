@@ -5,15 +5,15 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="../Estils/estils.css">
+	<link rel="stylesheet" href="Estils/estils.css">
 	<title>Paginació</title>
 </head>
 
 
 <body>
 <ul class="ull">
-  <li class="lii"><a class="lia" href="">Login</a></li>
-  <li class="lii"><a class="lia" href="">Resistrate</a></li>
+  <li class="lii"><a class="lia" href="vista/register.vista.php">Register</a></li>
+  <li class="lii"><a class="lia" href="vista/login.vista.php">Login</a></li>
 </ul>
 
 	<div class="contenidor">
