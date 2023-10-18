@@ -12,8 +12,8 @@
 
 <body>
 <ul class="ull">
-  <li class="lii"><a class="lia" href="vista/register.vista.php">Register</a></li>
-  <li class="lii"><a class="lia" href="vista/login.vista.php">Login</a></li>
+  <li class="lii"><a class="lia" href="model/register.php">Register</a></li>
+  <li class="lii"><a class="lia" href="model/login.php">Login</a></li>
 </ul>
 
 	<div class="contenidor">

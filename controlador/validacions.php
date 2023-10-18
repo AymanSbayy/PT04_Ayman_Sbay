@@ -1,20 +1,22 @@
 <?php
 
-function validar_dni($dni) {
-    $letra = substr($dni, -1);
-    $numeros = substr($dni, 0, -1);
-    $letras_validas = "TRWAGMYFPDXBNJZSQVHLCKE";
-    $posicion_letra = $numeros % 23;
-    $letra_correcta = substr($letras_validas, $posicion_letra, 1);
-    return strtoupper($letra) === $letra_correcta;
+
+function validar_dni2($dni) {
+    return preg_match('/^[0-9]{8}[A-Z]$/', $dni) !== 1;
 }
 
-function validar_correo($correo) {
+
+function validar_email($correo) {
     return filter_var($correo, FILTER_VALIDATE_EMAIL) !== false;
 }
 
 function validar_nombre($nombre) {
-    return preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$/', $nombre) === 1;
+    return preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$/', $nombre) !== 1;
+}
+
+
+function validar_contraseña2($contraseña) {
+    return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}$/', $contraseña) !== 1;
 }
 
 function validar_contraseña($contraseña, $contraseña_verificacion) {
