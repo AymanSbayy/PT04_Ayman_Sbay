@@ -1,4 +1,5 @@
 <?php
+session_start();
 //Ayman Sbay Zekkari  - Pràctica 3
 if(!isset($_SESSION['dni']))
 {
@@ -18,9 +19,6 @@ if(!isset($_SESSION['dni']))
     $inici = ($pagina - 1) * $numArt;
 
     $art = getArticles($inici, $numArt);
-
-
-
 
     include 'vista/index.vista.php';
 } else {

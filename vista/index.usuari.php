@@ -12,7 +12,7 @@
 
 <body>
 <ul class="ull">
-  <li class="lii"><a class="lia" href="">Tencar sessió</a></li>
+  <li class="lii"><a class="lia" href="model/closesess.php">Tencar sessió</a></li>
 </ul>
 
 	<div class="contenidor">

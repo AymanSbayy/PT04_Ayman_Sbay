@@ -27,8 +27,6 @@ if (isset($_POST['dni']) && isset($_POST['password'])) {
         if (password_verify($password, $result['Contraseña'])) {
             session_start();
             $_SESSION['dni'] = $dni;
-            
-
             header('location: ../index.php');
         } else {
             $errors .= "El DNI o la contrasenya introduïts no són correctes. <br>";
