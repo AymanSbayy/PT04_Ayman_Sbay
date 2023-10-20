@@ -10,7 +10,7 @@
         <form action="../model/login.php" method="post">
 
             <label>DNI</label>
-            <input type="text" name="username" required="">
+            <input type="text" name="dni" required="">
             <label>Contraseña</label>
             <input type="password" name="password" required="">
             <input type="submit" name="submit" value="Enviar">
