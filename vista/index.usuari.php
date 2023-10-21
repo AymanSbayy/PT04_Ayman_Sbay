@@ -17,14 +17,15 @@
 
 	<div class="contenidor">
 		<h1>Articles</h1>
-		<section class="botons">
-		<input type="number" id="id" name="id" min="0" max="100" step="1">
-			<button class="btn" onclick="window.location.href='model/inserir.php'">Insertar</button>
-			<button class="btn" onclick="window.location.href='model/mostrar.php'">Esborrar</button>
-			<button class="btn" onclick="window.location.href='model/editar.php'">Editar</button>
-
+		<section class="botons" action="model/esborrar.php" method="get">
+		<form action="model/esborrar.php" method="get">
+        <input type="number" id="id" name="id" min="0" max="50" step="1"><br><br>
+        <button type="submit" class="btn" formaction="model/inserir.php">Insertar</button>
+        <button type="submit" class="btn" formaction="model/esborrar.php">Esborrar</button>
+        <button type="submit" class="btn" formaction="model/editar.php">Editar</button>
+    </form>
 		</section>
-		<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
+		<form class="forma" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
 			<select name="numart" id="numart" onchange="this.form.submit()">
 				<option value="5" <?php if ($numArt == 5) echo "selected"; ?>>5</option>
 				<option value="10" <?php if ($numArt == 10) echo "selected"; ?>>10</option>
