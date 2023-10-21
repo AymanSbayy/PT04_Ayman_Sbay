@@ -12,6 +12,7 @@
 
 <body>
 <ul class="ull">
+  <li class="liii"><a class="lia"><?php echo $_SESSION['dni']; ?></a></li>
   <li class="lii"><a class="lia" href="model/closesess.php">Tencar sessió</a></li>
 </ul>
 
@@ -19,6 +20,7 @@
 		<h1>Articles</h1>
 		<section class="botons" action="model/esborrar.php" method="get">
 		<form action="model/esborrar.php" method="get">
+		<label for="id">Numº d'article que vols esborrar: </label>
         <input type="number" id="id" name="id" min="0" max="50" step="1"><br><br>
         <button type="submit" class="btn" formaction="model/inserir.php">Insertar</button>
         <button type="submit" class="btn" formaction="model/esborrar.php">Esborrar</button>

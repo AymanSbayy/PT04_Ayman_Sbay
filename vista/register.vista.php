@@ -8,11 +8,11 @@
     <div class="register-form">
         <form action="../model/register.php" method="post">
             <label for="username">DNI:</label>
-            <input type="text" name="dni" required>
+            <input type="text" name="dni" value="<?php echo isset($_POST['dni']) ? $_POST['dni'] : ''; ?>">
             <label for="username">Nom d'usuari:</label>
-            <input type="text" name="username" required>
+            <input type="text" name="username" value="<?php echo isset($_POST['username']) ? $_POST['username'] : ''; ?>">
             <label for="email">Correu electrònic:</label>
-            <input type="email" name="email" required>
+            <input type="email" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>">
             <label for="password">Contrasenya:</label>
             <input type="password" name="password" required>
             <label for="confirm_password">Confirmar contrasenya:</label>

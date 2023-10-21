@@ -12,6 +12,7 @@
 
 <body>
 <ul class="ull">
+<li class="liii"><a class="lia">Anònim</a></li>
   <li class="lii"><a class="lia" href="model/register.php">Register</a></li>
   <li class="lii"><a class="lia" href="model/login.php">Login</a></li>
 </ul>

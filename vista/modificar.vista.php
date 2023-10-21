@@ -11,6 +11,7 @@
     </ul>
     <h1>Modificar</h1>
     <form action="../model/modificar.php" method="POST" class="contenidor">
+        <label for="id">Numº d'article que vols modificar: </label>
         <input type="number" id="id" name="id" min="0" max="50" step="1"><br><br>
         <label for="titulo">Títol:</label>
         <input type="text" id="titulo2" name="titulo2"><br><br>
