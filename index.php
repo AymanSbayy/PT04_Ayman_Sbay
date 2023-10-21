@@ -1,6 +1,6 @@
 <?php
 session_start();
-//Ayman Sbay Zekkari  - Pràctica 3
+
 if(!isset($_SESSION['dni']))
 {
     $final = "";
@@ -22,8 +22,6 @@ if(!isset($_SESSION['dni']))
 
     include 'vista/index.vista.php';
 } else {
-    
-    //Do the same as above but only taking the articles that the user has, it is in a camp called articles in the database with a foreign key to the user's dni
     $final = "";
 
     if (!isset($_GET['pagina'])) {
@@ -113,9 +111,8 @@ if(!isset($_SESSION['dni']))
     function Articles()
     {
         if (isset($_GET['numart'])) {
-            $_SESSION['numArt'] = $_GET['numart']; // Store the selected number of articles in the session
+            $_SESSION['numArt'] = $_GET['numart']; 
         } else {
-            // If not set, use the default value of 5 or the stored value if available
             $_SESSION['numArt'] = isset($_SESSION['numArt']) ? $_SESSION['numArt'] : 5;
         }
         return $_SESSION['numArt'];

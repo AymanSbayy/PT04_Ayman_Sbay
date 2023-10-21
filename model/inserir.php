@@ -1,7 +1,21 @@
-<?php 
+<?php
+/**
+ * Archivo: /c:/xampp/htdocs/Backend/UF1/PT05_Ayman_Sbay/model/inserir.php
+ * Descripción: Este archivo contiene la lógica para insertar un artículo en la base de datos.
+ * PHP version 7.4.22
+ *
+ * @category Lógica
+ * @package  Inserción de Artículos
+ * @author   Ayman
+ * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ * @link     https://github.com/aymansbay/PT05_Ayman_Sbay
+ */
+
 session_start();
+
 $errors = "";
-if(!isset($_SESSION['dni'])){
+
+if (!isset($_SESSION['dni'])) {
     echo "<script>alert('No has iniciat sessió')</script>";
     header('refresh:0.01; url=../index.php');
 } else {
@@ -18,13 +32,22 @@ if(!isset($_SESSION['dni'])){
         if (empty($errors)) {
             inserirArt($dni, $titulo, $articulo);
         }
-        
     }
 }
 
 include "../vista/insert.vista.php";
 
-function inserirArt($dni, $titulo, $articulo){
+/**
+ * Función para insertar un artículo en la base de datos.
+ *
+ * @param string $dni     DNI del usuario que inserta el artículo.
+ * @param string $titulo  Título del artículo.
+ * @param string $articulo Contenido del artículo.
+ *
+ * @return void
+ */
+function inserirArt($dni, $titulo, $articulo)
+{
     include_once '../database/pdo.php';
 
     $conn = connexion();
@@ -39,15 +62,25 @@ function inserirArt($dni, $titulo, $articulo){
     echo "<script>alert('Article inserit')</script>";
 }
 
-function getNextArticlePosition() {
+/**
+ * Función para obtener la siguiente posición disponible para un artículo.
+ *
+ * @return int La siguiente posición disponible para un artículo.
+ */
+function getNextArticlePosition()
+{
     include_once '../database/pdo.php';
 
     $conn = connexion();
-    $sql = "SELECT COUNT(*) FROM articles";
+    $sql = "SELECT id FROM articles ORDER BY id ASC";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
-    $count = $stmt->fetchColumn();
-    return $count;
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $used_positions = array_column($result, 'id');
+    $next_position = 1;
+    while (in_array($next_position, $used_positions)) {
+        $next_position++;
+    }
+    return $next_position;
 }
-
 ?>

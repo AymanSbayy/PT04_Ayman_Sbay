@@ -22,7 +22,7 @@
         <input type="number" id="id" name="id" min="0" max="50" step="1"><br><br>
         <button type="submit" class="btn" formaction="model/inserir.php">Insertar</button>
         <button type="submit" class="btn" formaction="model/esborrar.php">Esborrar</button>
-        <button type="submit" class="btn" formaction="model/editar.php">Editar</button>
+        <button type="submit" class="btn" formaction="model/modificar.php">Modificar</button>
     </form>
 		</section>
 		<form class="forma" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">

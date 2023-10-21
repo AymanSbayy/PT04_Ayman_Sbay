@@ -1,5 +1,5 @@
 <?php
-//Ayman Sbay Zekkari  - Pràctica 3
+//Ayman Sbay Zekkari  - Pràctica 4
 /**
  * connexion
  * //Funcio que conecta amb la base de dades

@@ -1,11 +1,11 @@
 <?php 
 session_start();
-
 if (!isset($_SESSION['dni'])) {
     header("Location: ../index.php");
 } else {
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
+
         esborrar($id);
         
     } else {

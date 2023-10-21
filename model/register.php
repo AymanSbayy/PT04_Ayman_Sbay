@@ -65,9 +65,7 @@ function registerUser($dni, $username, $email, $password) {
     $sql = "INSERT INTO usuaris (DNI, Nom, Correu, Contraseña) VALUES ('$dni', '$username', '$email', '$password')";
     $conn->exec($sql);
 
-    
     $_SESSION['dni'] = $username;
-    //Alert usuari registrat correctament
 
     echo "<script type='text/javascript'>alert('Usuari registrat correctament');</script>";
 

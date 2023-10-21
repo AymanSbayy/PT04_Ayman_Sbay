@@ -1,7 +1,6 @@
 <?php 
 
 function idExists($id) {
-    //validar si el dni existeix
     include_once '../database/pdo.php';
     $conn = connexion();
     $sql = "SELECT * FROM usuaris WHERE DNI = '$id'";
@@ -15,7 +14,6 @@ function idExists($id) {
 }
 
 function emailExists($email) {
-    //validar si el email ya existeix
     include_once '../database/pdo.php';
     $conn = connexion();
     $sql = "SELECT * FROM usuaris WHERE Correu = '$email'";
