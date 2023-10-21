@@ -17,6 +17,13 @@
 
 	<div class="contenidor">
 		<h1>Articles</h1>
+		<section class="botons">
+		<input type="number" id="id" name="id" min="0" max="100" step="1">
+			<button class="btn" onclick="window.location.href='model/inserir.php'">Insertar</button>
+			<button class="btn" onclick="window.location.href='model/mostrar.php'">Esborrar</button>
+			<button class="btn" onclick="window.location.href='model/editar.php'">Editar</button>
+
+		</section>
 		<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
 			<select name="numart" id="numart" onchange="this.form.submit()">
 				<option value="5" <?php if ($numArt == 5) echo "selected"; ?>>5</option>
@@ -55,7 +62,8 @@
 				<?php endif; ?>
 			</ul>
 		</section>
-
+		<p><span style="color: red;">S'ha de tenir en compte que cada article té el seu propi ID. Si vols modificar o esborrar un article has d'inserir el mateix ID d'aquest.</span></p>
+		
 	</div>
 </body>
 

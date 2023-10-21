@@ -64,7 +64,7 @@ if(!isset($_SESSION['dni']))
         $art = '';
 
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-            $art .= '<li>' . $row['Títol'] . ' - ' . $row['art'] . '</li>';
+            $art .= '<li>' . $row['ID'] . ' - ' . $row['Títol'] . ' - ' . $row['art'] . '</li>';
         }
 
         return $art;
@@ -137,7 +137,7 @@ if(!isset($_SESSION['dni']))
         $art = '';
     
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $art .= '<li>' . $row['Títol'] . ' - ' . $row['art'] . '</li>';
+            $art .= '<li>' . $row['ID'] . ' - ' . $row['Títol'] . ' - ' . $row['art'] . '</li>';
         }
     
         return $art;
