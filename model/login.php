@@ -1,24 +1,36 @@
 <?php 
 
+/**
+ * Archivo: /c:/xampp/htdocs/Backend/UF1/PT05_Ayman_Sbay/model/login.php
+ * Descripción: Este archivo contiene la función de inicio de sesión y la lógica para manejar el inicio de sesión.
+ * PHP version 7.4.16
+ */
+
 session_start();
 $errors = "";
-
-if(!isset($_SESSION['dni'])){
+if (!isset($_SESSION['dni'])) {
     if (isset($_POST['dni']) && isset($_POST['password'])) {
         $dni = $_POST['dni'];
         $password = $_POST['password'];
 
-        login($dni, $password);
+        $errors .=login($dni, $password);
     }
-
-    include '../vista/login.vista.php';
-
 } else {
     header('location: ../index.php');
 }
+include '../vista/login.vista.php';
 
 
-function login($dni, $password) {
+/**
+ * Función para manejar el inicio de sesión.
+ *
+ * @param string $dni      El DNI del usuario.
+ * @param string $password La contraseña del usuario.
+ *
+ * @return string          Devuelve una cadena de errores si los hay.
+ */
+function login($dni, $password)
+{
     require_once "../database/pdo.php";
     $errors = "";
 
@@ -36,8 +48,7 @@ function login($dni, $password) {
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        //$hash = $result['Contraseña'];
-        if (password_verify($password, $result['Contraseña'])) {
+        if (is_array($result) && array_key_exists('Contraseña', $result) && password_verify($password, $result['Contraseña'])) {
             $_SESSION['dni'] = $dni;
             header('location: ../index.php');
         } else {

@@ -1,5 +1,11 @@
 <?php 
 
+/**
+ * Verifica si un usuario con el DNI dado ya existe en la base de datos.
+ *
+ * @param string $id El DNI del usuario a verificar.
+ * @return bool Verdadero si el usuario existe, falso en caso contrario.
+ */
 function idExists($id) {
     include_once '../database/pdo.php';
     $conn = connexion();
@@ -13,6 +19,12 @@ function idExists($id) {
     }
 }
 
+/**
+ * Verifica si un usuario con el correo electrónico dado ya existe en la base de datos.
+ *
+ * @param string $email El correo electrónico del usuario a verificar.
+ * @return bool Verdadero si el usuario existe, falso en caso contrario.
+ */
 function emailExists($email) {
     include_once '../database/pdo.php';
     $conn = connexion();
@@ -25,8 +37,5 @@ function emailExists($email) {
         return false;
     }
 }
-
-
-
 
 ?>

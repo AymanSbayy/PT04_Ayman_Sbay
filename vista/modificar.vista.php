@@ -19,7 +19,9 @@
         <p><span style="color: red;"><?php echo $errors; ?></span></p>
         <input type="submit" value="Modificar">
         <input type="button" value="Tornar" onclick="window.location.href='../index.php'">
+        <p><span style="color: red;">S'ha de tenir en compte que cada article té el seu propi ID. Si vols modificar un article has d'inserir el mateix ID d'aquest.</span></p>
     </form>
+    
 
     
 </div>

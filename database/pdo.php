@@ -1,9 +1,12 @@
 <?php
-//Ayman Sbay Zekkari  - Pràctica 4
+
 /**
- * connexion
- * //Funcio que conecta amb la base de dades
- * @return
+ * Función que establece la conexión con la base de datos.
+ *
+ * @return PDO Objeto PDO que representa la conexión con la base de datos.
+ * @throws PDOException Si ocurre un error al conectarse con la base de datos.
+ *
+ * @see db.constants.php Archivo que contiene las constantes de configuración de la base de datos.
  */
 function connexion()
 {

@@ -63,7 +63,7 @@
 				<?php endif; ?>
 			</ul>
 		</section>
-		<p><span style="color: red;">S'ha de tenir en compte que cada article té el seu propi ID. Si vols modificar o esborrar un article has d'inserir el mateix ID d'aquest.</span></p>
+		<p><span style="color: red;">S'ha de tenir en compte que cada article té el seu propi ID. Si vols esborrar un article has d'inserir el mateix ID d'aquest.</span></p>
 		
 	</div>
 </body>
