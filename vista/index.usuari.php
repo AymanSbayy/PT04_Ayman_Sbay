@@ -31,6 +31,7 @@
 			</ul>
 		</section>
 
+
 		<section class="paginacio">
 			<ul class="pagination">
 				<?php if ($pagina > 1) : ?>

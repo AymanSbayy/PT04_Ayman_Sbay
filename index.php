@@ -22,6 +22,25 @@ if(!isset($_SESSION['dni']))
 
     include 'vista/index.vista.php';
 } else {
+    
+    //Do the same as above but only taking the articles that the user has, it is in a camp called articles in the database with a foreign key to the user's dni
+    $final = "";
+
+    if (!isset($_GET['pagina'])) {
+        $pagina = 1;
+    } else {
+        $pagina = $_GET['pagina'];
+    }
+
+    $numArt = Articles();
+
+    $numArticles = totalArticles2();
+    $pagines = ceil($numArticles / $numArt);
+
+    $inici = ($pagina - 1) * $numArt;
+
+    $art = getArticles2($_SESSION['dni'], $inici, $numArt);
+    
     include 'vista/index.usuari.php';
 }
 
@@ -69,6 +88,21 @@ if(!isset($_SESSION['dni']))
             echo "Error: " . $e->getMessage();
         }
     }
+    
+    function totalArticles2()
+    {
+        include_once 'database/pdo.php';
+        try {
+            $conn = connexion();
+            $dni = $_SESSION['dni'];
+            $sql = "SELECT COUNT(*) FROM articles WHERE user_dni = '$dni'";
+            $result = $conn->query($sql);
+            $numArticles = $result->fetchColumn();
+            return $numArticles;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
 
 
     /**
@@ -85,5 +119,27 @@ if(!isset($_SESSION['dni']))
             $_SESSION['numArt'] = isset($_SESSION['numArt']) ? $_SESSION['numArt'] : 5;
         }
         return $_SESSION['numArt'];
+    }
+
+
+    function getArticles2($dni, $inici, $numArt)
+    {
+        include_once 'database/pdo.php';
+        $conn = connexion();
+    
+        $sql = "SELECT * FROM articles WHERE user_dni = :dni LIMIT :inici, :numArt";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':dni', $dni);
+        $stmt->bindParam(':inici', $inici, PDO::PARAM_INT);
+        $stmt->bindParam(':numArt', $numArt, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        $art = '';
+    
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $art .= '<li>' . $row['Títol'] . ' - ' . $row['art'] . '</li>';
+        }
+    
+        return $art;
     }
 ?>

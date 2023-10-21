@@ -6,6 +6,8 @@ session_destroy();
 
 echo "<script>alert('Sessió tancada correctament');</script>";
 
-header('location: ../index.php');
+
+header('refresh:0.01; url=../index.php');
+
 
 ?>

@@ -1,18 +1,32 @@
 <?php 
-
+session_start();
 $errors = "";
 
+if(!isset($_SESSION['dni'])){
+    if (isset($_POST['dni']) && isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm_password'])) {
+        $dni = $_POST['dni'];
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $confirm_password = $_POST['confirm_password'];
 
-if (isset($_POST['dni']) && isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm_password'])) {
-    $dni = $_POST['dni'];
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
+        $errors = validateInput($dni, $username, $email, $password, $confirm_password);
 
+        if (empty($errors)) {
+            registerUser($dni, $username, $email, $password);
+        }
+    }
+
+    include '../vista/register.vista.php';
+}
+else {
+    header('location: ../index.php');
+}
+
+function validateInput($dni, $username, $email, $password, $confirm_password) {
+    $errors = "";
     require_once "../controlador/validacions.php";
     require_once "../controlador/validacionsdb.php";
-    require_once "../database/pdo.php";
 
     if (validar_dni2($dni)) {
         $errors .= "El DNI introduït no és vàlid. <br>";
@@ -42,21 +56,22 @@ if (isset($_POST['dni']) && isset($_POST['username']) && isset($_POST['email']) 
         $errors .= "Les contrasenyes no coincideixen. <br>";
     }
 
-    if (empty($errors)) {
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        $conn = connexion();
-        $sql = "INSERT INTO usuaris (DNI, Nom, Correu, Contraseña) VALUES ('$dni', '$username', '$email', '$password')";
-        $conn->exec($sql);
-
-        session_start();
-        $_SESSION['username'] = $username;
-        $_SESSION['success'] = "S'ha iniciat sessió correctament.";
-
-        header('location: ../index.php');
-    }
+    return $errors;
 }
 
+function registerUser($dni, $username, $email, $password) {
+    $password = password_hash($password, PASSWORD_DEFAULT);
+    $conn = connexion();
+    $sql = "INSERT INTO usuaris (DNI, Nom, Correu, Contraseña) VALUES ('$dni', '$username', '$email', '$password')";
+    $conn->exec($sql);
 
-include '../vista/register.vista.php';
+    
+    $_SESSION['dni'] = $username;
+    //Alert usuari registrat correctament
+
+    echo "<script type='text/javascript'>alert('Usuari registrat correctament');</script>";
+
+    header('refresh:0.01; url=../index.php');
+}
 
 ?>
